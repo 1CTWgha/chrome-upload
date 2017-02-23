@@ -17,4 +17,4 @@ Instructions:
       Search, Email, Development, Financial, Travel, and Work.
 
 Image:
-![Chrome Browser History](screenshot.gif)
+![Chrome Browser History](screenshot.png)
