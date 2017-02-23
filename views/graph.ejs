@@ -1,4 +1,14 @@
-<h1>Graphed Browser History</h1>
+<div class="content">
+  <h1 >
+    <span class="googleblue">G</span><span class="googlered">r</span><span class="googleyellow">a</span><span class="googleblue">p</span><span class="googlegreen">h</span><span class="googlered">e</span><span class="googleblue">d</span>
+    <span class="googlered">B</span><span class="googleyellow">r</span><span class="googleblue">o</span><span class="googlegreen">w</span><span class="googlered">s</span><span class="googleblue">e</span><span class="googlered">r</span>
+    <span class="googleyellow">H</span><span class="googleblue">i</span><span class="googlegreen">s</span><span class="googlered">t</span><span class="googleblue">o</span><span class="googlered">r</span><span class="googleyellow">y</span>
+  </h1>
+  <br>
+  <p class="content render">
+    Below is a summary of your upladed browser history by category.
+  </p>
+</div>
 
 <script>
 var bh = <%- contents %>
@@ -105,8 +115,8 @@ function drawChart() {
 
   // Set chart options
   var options = {'title':'Recent Chrome History',
-                 'width':400,
-                 'height':300};
+                 'width':700,
+                 'height':525};
 
   // Instantiate and draw our chart, passing in some options.
   var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
@@ -115,5 +125,11 @@ function drawChart() {
 
 </script>
 
+<div class="container">
 <!--Div that will hold the pie chart-->
-<div id="chart_div"></div>
+  <div class="row">
+    <div class="col-lg-2 col-md-1 col-xs-0"></div>
+    <div id="chart_div" class="col-lg-8 col-md-10 col-xs-12"></div>
+    <div class="col-lg-2 col-md-1 col-xs-0"></div>
+  </div>
+</div>

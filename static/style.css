@@ -1,0 +1,42 @@
+body{
+  background-image: url(../Google-Chrome-icon.png);
+}
+.content {
+  margin-top: 10em;
+  color: #3cba54;
+  margin: 0 auto;
+  text-align: center;
+  width: 60%;
+  background-color: #ffffff;
+}
+/*.chart {
+  align-items: center;
+}*/
+#chart_div {
+  margin-top: 5em;
+  align-content: center;
+  /*border: 2px solid black;*/
+}
+.image {
+  height: 20%;
+  width: 40%;
+}
+.imageexample {
+  margin: 0 auto;
+  text-align: center;
+}
+/*.render {
+  margin-top: 5em;
+}*/
+.googleblue {
+  color: #4885ed;
+}
+.googlered{
+  color: #db3236;
+}
+.googleyellow{
+  color: #f4c20d;
+}
+.googlegreen{
+  color: #3cba54;
+}
