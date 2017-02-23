@@ -2,4 +2,108 @@
 
 <script>
 var bh = <%- contents %>
+
+var categories = {
+    "Search": "Google Search|google|search|bing|google maps|yahoo",
+    "Mail": "inbox|Spam|gmail|sign in",
+    "Development": "Java|Javascript|HTML|css|div|general assembly|github|Technology|atom|Microsoft|details|Apps|software|Apple|download|slack",
+    "Financial": "Bill|tax|account|portfolio|scam|Chase|Bank|payroll",
+    // "Recreation": "Cooking|restaurant|directions|transit",
+    "Travel": "uber|Travel|trip|airplane|ship",
+    "Work": "Excel|powerPoint|job|Glassdoor|Analyst|LinkedIn"
+  };
+
+var regList = {};
+console.log(regList);
+for (var property in categories) {
+  if (categories.hasOwnProperty(property)) {
+    var string = categories[property];
+    console.log(string);
+    categories[property] = 0;
+      if (string.includes(",")) {
+        // var a = string.replace(",", "|");
+        regList[property] = new RegExp(a, "i");
+      } else {
+        regList[property] = new RegExp(string, "i");
+      }
+    }
+}
+
+function transformCategories () {
+  var result = [];
+  // console.log(result);
+  for (var property in categories) {
+    // console.log(property);
+    // console.log(categories);
+    if (categories.hasOwnProperty(property)) {
+      result.push([property, categories[property]]);
+    }
+  }
+  return result;
+}
+
+function categorize (title) {
+  for (var property in regList) {
+    if (regList.hasOwnProperty(property)) {
+      if (title.match(regList[property])) {
+        categories[property]++;
+        return property;
+      }
+    }
+  }
+  return null;
+}
+
+// console.log('Processing');
+var log = bh['Browser History'];//JSON.parse(data)['Browser History'];
+log = log.filter(function(item) {
+  return item.title !== "";
+}).map((item) => {
+  var category = categorize(item.title);
+  item.time_usec = new Date(item.time_usec);
+  item.category = category;
+     delete item.client_id;
+     delete item.favicon_url;
+     delete item.page_transition;
+});
+
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {'packages':['corechart']});
+
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(drawChart);
+
+// Callback that creates and populates a data table,
+// instantiates the pie chart, passes in the data and
+// draws it.
+function drawChart() {
+
+  // Create the data table.
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Categories');
+  data.addColumn('number', 'Instances');
+  data.addRows(
+    transformCategories()
+  //   [
+  //   ['Search', 6468],
+  //   ['Mail', 6060],
+  //   ['Development', 2294],
+  //   ['Financial', 7070],
+  //   ['Recreation', 113],
+  //   ['Internet', 35],
+  //   ['Work', 100]
+  // ]
+);
+
+  // Set chart options
+  var options = {'title':'Recent Chrome History',
+                 'width':400,
+                 'height':300};
+
+  // Instantiate and draw our chart, passing in some options.
+  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+
+
 </script>
