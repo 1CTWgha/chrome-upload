@@ -14,11 +14,11 @@ var categories = {
   };
 
 var regList = {};
-console.log(regList);
+// console.log(regList);
 for (var property in categories) {
   if (categories.hasOwnProperty(property)) {
     var string = categories[property];
-    console.log(string);
+    // console.log(string);
     categories[property] = 0;
       if (string.includes(",")) {
         // var a = string.replace(",", "|");
@@ -34,7 +34,7 @@ function transformCategories () {
   // console.log(result);
   for (var property in categories) {
     // console.log(property);
-    // console.log(categories);
+    console.log(categories);
     if (categories.hasOwnProperty(property)) {
       result.push([property, categories[property]]);
     }
@@ -42,11 +42,14 @@ function transformCategories () {
   return result;
 }
 
+// transformCategories();
+
 function categorize (title) {
   for (var property in regList) {
     if (regList.hasOwnProperty(property)) {
       if (title.match(regList[property])) {
         categories[property]++;
+        // console.log(property);
         return property;
       }
     }
@@ -54,18 +57,23 @@ function categorize (title) {
   return null;
 }
 
+
 // console.log('Processing');
 var log = bh['Browser History'];//JSON.parse(data)['Browser History'];
 log = log.filter(function(item) {
+  // console.log(log);
   return item.title !== "";
 }).map((item) => {
   var category = categorize(item.title);
   item.time_usec = new Date(item.time_usec);
   item.category = category;
+  // console.log(category);
      delete item.client_id;
      delete item.favicon_url;
      delete item.page_transition;
 });
+
+
 
 // Load the Visualization API and the corechart package.
 google.charts.load('current', {'packages':['corechart']});
@@ -105,5 +113,7 @@ function drawChart() {
   chart.draw(data, options);
 }
 
-
 </script>
+
+<!--Div that will hold the pie chart-->
+<div id="chart_div"></div>
