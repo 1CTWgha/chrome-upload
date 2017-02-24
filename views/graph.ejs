@@ -1,8 +1,10 @@
 <div class="content">
   <h1 >
-    <span class="googleblue">G</span><span class="googlered">r</span><span class="googleyellow">a</span><span class="googleblue">p</span><span class="googlegreen">h</span><span class="googlered">e</span><span class="googleblue">d</span>
-    <span class="googlered">B</span><span class="googleyellow">r</span><span class="googleblue">o</span><span class="googlegreen">w</span><span class="googlered">s</span><span class="googleblue">e</span><span class="googlered">r</span>
-    <span class="googleyellow">H</span><span class="googleblue">i</span><span class="googlegreen">s</span><span class="googlered">t</span><span class="googleblue">o</span><span class="googlered">r</span><span class="googleyellow">y</span>
+    <a href="/">
+      <span class="googleblue">G</span><span class="googlered">r</span><span class="googleyellow">a</span><span class="googleblue">p</span><span class="googlegreen">h</span><span class="googlered">e</span><span class="googleblue">d</span>
+      <span class="googlered">B</span><span class="googleyellow">r</span><span class="googleblue">o</span><span class="googlegreen">w</span><span class="googlered">s</span><span class="googleblue">e</span><span class="googlered">r</span>
+      <span class="googleyellow">H</span><span class="googleblue">i</span><span class="googlegreen">s</span><span class="googlered">t</span><span class="googleblue">o</span><span class="googlered">r</span><span class="googleyellow">y</span>
+    </a>
   </h1>
   <br>
   <p class="content render">
@@ -45,9 +47,9 @@ function transformCategories () {
   for (var property in categories) {
     // console.log(property);
     console.log(categories);
-    if (categories.hasOwnProperty(property)) {
+    // if (categories.hasOwnProperty(property)) {
       result.push([property, categories[property]]);
-    }
+    // }
   }
   return result;
 }
@@ -56,13 +58,13 @@ function transformCategories () {
 
 function categorize (title) {
   for (var property in regList) {
-    if (regList.hasOwnProperty(property)) {
+    // if (regList.hasOwnProperty(property)) {
       if (title.match(regList[property])) {
         categories[property]++;
         // console.log(property);
         return property;
       }
-    }
+    // }
   }
   return null;
 }

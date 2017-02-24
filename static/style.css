@@ -1,6 +1,9 @@
 body{
   background-image: url(../Google-Chrome-icon.png);
 }
+ol  {
+  text-align: left;
+}
 .content {
   margin-top: 10em;
   color: #3cba54;
