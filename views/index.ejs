@@ -13,21 +13,18 @@
     <span class="googlered">h</span><span class="googleyellow">e</span><span class="googleblue">r</span><span class="googlegreen">e</span>.
   </h3>
 
-  <!-- $("form")[0].files -->
-  <!-- <script>
-  1. attach on submit handler
-  2. detect length of file list inside submit handler
-  3. use preventDefault() to stop form from submitting
-  if (FileList.length < 1) {
-
-   }
-  </script> -->
-
-  <form enctype="multipart/form-data" action="/" method="POST">
+  <form id="target" enctype="multipart/form-data" action="/" method="POST">
     <input type="file" name="myFile" class="">
     <input type="submit" class="btn btn-success">
   </form>
 
+  <script>
+    $("#target").submit(function(event){
+      if ($("form input")[0].files.length < 1) {
+        event.preventDefault();
+      }
+    });
+  </script>
 
   <br>
     <p>
